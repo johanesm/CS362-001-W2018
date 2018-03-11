@@ -152,7 +152,7 @@ public class CalendarMain {
         LinkedList<CalDay> calDays = new LinkedList<CalDay>();
 
 		
-		//added permutation to output // THIS ISN'T FUNCTIONING RIGHT
+		//added permutation to output 
 		int a[] = {3,2,1,0};
 		
 		if(diagnose){
