@@ -1,0 +1,35 @@
+Bug Report for Mariah Alexander's (alexmari) code:
+
+Bug 1 (Appt.java, Line 115):
+
+The first bug that was found on Line 115 of Appt.java. The line of code read: 
+
+    	if(startHour<=0 || startHour>=23)
+
+When it should have been:
+
+    	if(startHour<0 || startHour>23)
+
+This bug made it so that Appts with a startHour of either 0 or 23 had their validity set to false, which made certain functions fail to execute that relied on valid to be set to true. It also made validity checks fail for these boundry cases.
+
+Bug 1 Detection:
+
+This bug was found through the ApptTest.java code's assertTrue validation on line 229, because of startHour being set to 23 on line 209. The assertTrue validation on line 231 also failed, after the startHour was set to 0 on the previous line. When eliminating these conditional checks or changing the values to 22 or 1, the test passed, which led me to pinpoint the bug to line 115 of Appt.java.
+
+This bug also caused a failure in the TimeTableTest.java code when 528 does have the correct value for appointments between the two dates. This was due to the startHour being set to 0 earlier in the code, which went away once the startHour value was changed or the bug was fixed.
+
+Bug 2 (Appt.java, Line 282):
+
+The second bug was found on Line 282 of Appt.java. The line of code read:
+
+        if (printableHour >= 11)
+
+When it should have been:
+
+        if (printableHour > 11)
+ 
+This bug made it so that times with a startHour of 11 would print out the starting hour as -1.
+
+Bug 2 Detection:
+
+This bug was found through the ApptTest.java code's assertTrue validation on line 134. This line checked that the output string matched the expected string constructed by the test code. When it failed, I looked at the output string and found that it was printing a -1 for the startHour. This led me to trace back the issue respresntationApp method that was adjusting the startHour's representation if it was 12 or larger. 
